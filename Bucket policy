@@ -1,0 +1,22 @@
+Bucket policies:
+
+how to give a permission for access 1 bucket to 1 public ip in aws?
+
+{
+    "Version": "2012-10-17",
+    "Id": "S3PolicyId1",
+    "Statement": [
+        {
+            "Sid": "IPAllow",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::my-bucket/*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": "1.2.3.4/32"
+                }
+            }
+        }	
+    ]
+}
